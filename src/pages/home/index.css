@@ -1,3 +1,58 @@
-.home-page {
-  margin: auto;
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  max-width: 1130px;
+  margin: 60px auto;
+}
+
+.home-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 30px;
+}
+
+.home-title {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.home-name {
+  color: #e60000;
+}
+
+.home-subtitle {
+  margin: 0;
+  font-size: 18px;
+}
+
+.home-charts {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.home-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.home-barchart {
+  width: 100%;
+  background-color: #fff;
+}
+
+.home-subchart {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
