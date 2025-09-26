@@ -1,5 +1,7 @@
+html,
 body {
   margin: 0;
+  height: 100%;
   font-family: "Roboto", sans-serif;
 }
 
@@ -7,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  height: 100%;
 }
 
 .content {
@@ -14,7 +17,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: start;
-  height: max-content;
   width: 100%;
 }
 
