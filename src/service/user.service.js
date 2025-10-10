@@ -1,74 +1,53 @@
-import ApiService from "./api.service";
-import MockService from "./mock.service";
-import User from "../models/User.model";
-import Activity from "../models/Activity.model";
-import AverageSessions from "../models/AverageSessions.model";
-import Performance from "../models/Performance.model";
+import { apiService } from "./api.service";
+import { mockService } from "./mock.service";
+import {
+  transformUser,
+  transformActivity,
+  transformAverageSessions,
+  transformPerformance,
+} from "./transformers";
 
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true" || false;
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
+const dataSource = USE_MOCK ? mockService : apiService;
 
-const dataSource = USE_MOCK ? MockService : ApiService;
-
-class DataService {
-  /**
-   * Récupère les données utilisateur formatées
-   * @param {number} userId
-   * @returns {Promise<User>}
-   */
-  static async getUser(userId) {
+export const userService = {
+  async getUser(userId) {
     try {
       const data = await dataSource.getUser(userId);
-      return new User(data);
+      return transformUser(data);
     } catch (error) {
       console.error("Erreur lors de la récupération de l'utilisateur:", error);
       throw error;
     }
-  }
+  },
 
-  /**
-   * Récupère l'activité formatée
-   * @param {number} userId
-   * @returns {Promise<Activity>}
-   */
-  static async getUserActivity(userId) {
+  async getUserActivity(userId) {
     try {
       const data = await dataSource.getUserActivity(userId);
-      return new Activity(data);
+      return transformActivity(data);
     } catch (error) {
       console.error("Erreur lors de la récupération de l'activité:", error);
       throw error;
     }
-  }
+  },
 
-  /**
-   * Récupère les sessions moyennes formatées
-   * @param {number} userId
-   * @returns {Promise<AverageSessions>}
-   */
-  static async getUserAverageSessions(userId) {
+  async getUserAverageSessions(userId) {
     try {
       const data = await dataSource.getUserAverageSessions(userId);
-      return new AverageSessions(data);
+      return transformAverageSessions(data);
     } catch (error) {
       console.error("Erreur lors de la récupération des sessions:", error);
       throw error;
     }
-  }
+  },
 
-  /**
-   * Récupère les performances formatées
-   * @param {number} userId
-   * @returns {Promise<Performance>}
-   */
-  static async getUserPerformance(userId) {
+  async getUserPerformance(userId) {
     try {
       const data = await dataSource.getUserPerformance(userId);
-      return new Performance(data);
+      return transformPerformance(data);
     } catch (error) {
       console.error("Erreur lors de la récupération des performances:", error);
       throw error;
     }
-  }
-}
-
-export default DataService;
+  },
+};

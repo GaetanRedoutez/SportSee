@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import DataService from "../service/user.service";
+import { userService } from "../service/user.service";
 
 /**
  * Hook personnalisé pour récupérer toutes les données d'un utilisateur
@@ -15,22 +15,22 @@ export const useUserData = (userId) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchAllData = async () => {
-      if (!userId) {
-        setLoading(false);
-        return;
-      }
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
 
+    const fetchAllData = async () => {
       setLoading(true);
       setError(null);
 
       try {
         const [userData, activityData, sessionsData, performanceData] =
           await Promise.all([
-            DataService.getUser(userId),
-            DataService.getUserActivity(userId),
-            DataService.getUserAverageSessions(userId),
-            DataService.getUserPerformance(userId),
+            userService.getUser(userId),
+            userService.getUserActivity(userId),
+            userService.getUserAverageSessions(userId),
+            userService.getUserPerformance(userId),
           ]);
 
         setUser(userData);
@@ -71,7 +71,7 @@ export const useUser = (userId) => {
       setError(null);
 
       try {
-        const userData = await DataService.getUser(userId);
+        const userData = await userService.getUser(userId);
         setUser(userData);
       } catch (err) {
         setError(err.message);
@@ -107,7 +107,7 @@ export const useUserActivity = (userId) => {
       setError(null);
 
       try {
-        const activityData = await DataService.getUserActivity(userId);
+        const activityData = await userService.getUserActivity(userId);
         setActivity(activityData);
       } catch (err) {
         setError(err.message);
@@ -143,7 +143,7 @@ export const useUserSessions = (userId) => {
       setError(null);
 
       try {
-        const sessionsData = await DataService.getUserAverageSessions(userId);
+        const sessionsData = await userService.getUserAverageSessions(userId);
         setAverageSessions(sessionsData);
       } catch (err) {
         setError(err.message);
@@ -179,7 +179,7 @@ export const useUserPerformance = (userId) => {
       setError(null);
 
       try {
-        const performanceData = await DataService.getUserPerformance(userId);
+        const performanceData = await userService.getUserPerformance(userId);
         setPerformance(performanceData);
       } catch (err) {
         setError(err.message);

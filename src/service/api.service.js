@@ -19,46 +19,24 @@ apiClient.interceptors.response.use(
   }
 );
 
-class ApiService {
-  /**
-   * Récupère les informations principales d'un utilisateur
-   * @param {number} userId
-   * @returns {Promise<Object>}
-   */
-  static async getUser(userId) {
-    const response = await apiClient.get(`/user/${userId}`);
-    return response.data.data;
-  }
+export const apiService = {
+  async getUser(userId) {
+    const { data } = await apiClient.get(`/user/${userId}`);
+    return data.data;
+  },
 
-  /**
-   * Récupère l'activité quotidienne d'un utilisateur
-   * @param {number} userId
-   * @returns {Promise<Object>}
-   */
-  static async getUserActivity(userId) {
-    const response = await apiClient.get(`/user/${userId}/activity`);
-    return response.data.data;
-  }
+  async getUserActivity(userId) {
+    const { data } = await apiClient.get(`/user/${userId}/activity`);
+    return data.data;
+  },
 
-  /**
-   * Récupère les sessions moyennes d'un utilisateur
-   * @param {number} userId
-   * @returns {Promise<Object>}
-   */
-  static async getUserAverageSessions(userId) {
-    const response = await apiClient.get(`/user/${userId}/average-sessions`);
-    return response.data.data;
-  }
+  async getUserAverageSessions(userId) {
+    const { data } = await apiClient.get(`/user/${userId}/average-sessions`);
+    return data.data;
+  },
 
-  /**
-   * Récupère les performances d'un utilisateur
-   * @param {number} userId
-   * @returns {Promise<Object>}
-   */
-  static async getUserPerformance(userId) {
-    const response = await apiClient.get(`/user/${userId}/performance`);
-    return response.data.data;
-  }
-}
-
-export default ApiService;
+  async getUserPerformance(userId) {
+    const { data } = await apiClient.get(`/user/${userId}/performance`);
+    return data.data;
+  },
+};
