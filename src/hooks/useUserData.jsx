@@ -25,18 +25,31 @@ export const useUserData = (userId) => {
       setError(null);
 
       try {
-        const [userData, activityData, sessionsData, performanceData] =
-          await Promise.all([
-            userService.getUser(userId),
-            userService.getUserActivity(userId),
-            userService.getUserAverageSessions(userId),
-            userService.getUserPerformance(userId),
-          ]);
+        const results = await Promise.allSettled([
+          userService.getUser(userId),
+          userService.getUserActivity(userId),
+          userService.getUserAverageSessions(userId),
+          userService.getUserPerformance(userId),
+        ]);
 
-        setUser(userData);
-        setActivity(activityData);
-        setAverageSessions(sessionsData);
-        setPerformance(performanceData);
+        results.forEach((result, index) => {
+          if (result.status === "fulfilled") {
+            switch (index) {
+              case 0:
+                setUser(result.value);
+                break;
+              case 1:
+                setActivity(result.value);
+                break;
+              case 2:
+                setAverageSessions(result.value);
+                break;
+              case 3:
+                setPerformance(result.value);
+                break;
+            }
+          }
+        });
       } catch (err) {
         setError(err.message);
       } finally {
