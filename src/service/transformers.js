@@ -36,10 +36,27 @@ const kindLabels = {
   intensity: "Intensité",
 };
 
-export const transformPerformance = (data) => ({
-  userId: data.userId,
-  performances: data.data.map((item) => ({
+const kindOrder = [
+  "Intensité",
+  "Vitesse",
+  "Force",
+  "Endurance",
+  "Énergie",
+  "Cardio",
+];
+
+export const transformPerformance = (data) => {
+  const performances = data.data.map((item) => ({
     value: item.value,
     kind: kindLabels[data.kind[item.kind]] || data.kind[item.kind],
-  })),
-});
+  }));
+
+  performances.sort(
+    (a, b) => kindOrder.indexOf(a.kind) - kindOrder.indexOf(b.kind)
+  );
+
+  return {
+    userId: data.userId,
+    performances,
+  };
+};

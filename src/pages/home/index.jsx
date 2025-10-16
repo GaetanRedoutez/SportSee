@@ -5,13 +5,14 @@ import { useUserData } from "../../hooks/useUserData";
 import "./index.css";
 import { Card } from "../../components/home/Card";
 import { Linechart } from "../../components/home/Linechart";
+import { Radarchart } from "../../components/home/Radarchart";
 
 export const HomePage = () => {
   const [userId, setUserId] = useState(12);
 
   const { user, activity, averageSessions, performance, loading, error } =
     useUserData(userId);
-
+  console.log(performance);
   if (loading) return <Loader />;
   if (error)
     return (
@@ -71,7 +72,7 @@ export const HomePage = () => {
           </div>
           <div className="home-subchart">
             <Linechart data={averageSessions?.sessions ?? []} />
-            <Linechart data={averageSessions?.sessions ?? []} />
+            <Radarchart data={performance.performances ?? []} />
             <Linechart data={averageSessions?.sessions ?? []} />
           </div>
         </div>
