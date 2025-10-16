@@ -4,9 +4,10 @@ import { Loader } from "../../components/common/Loader";
 import { useUserData } from "../../hooks/useUserData";
 import "./index.css";
 import { Card } from "../../components/home/Card";
+import { Linechart } from "../../components/home/Linechart";
 
 export const HomePage = () => {
-  const [userId, setUserId] = useState(21);
+  const [userId, setUserId] = useState(12);
 
   const { user, activity, averageSessions, performance, loading, error } =
     useUserData(userId);
@@ -69,9 +70,9 @@ export const HomePage = () => {
             <Barchart data={activity?.sessions ?? []} />
           </div>
           <div className="home-subchart">
-            <div>petit graph</div>
-            <div>petit graph</div>
-            <div>petit graph</div>
+            <Linechart data={averageSessions?.sessions ?? []} />
+            <Linechart data={averageSessions?.sessions ?? []} />
+            <Linechart data={averageSessions?.sessions ?? []} />
           </div>
         </div>
         <div className="home-cards">

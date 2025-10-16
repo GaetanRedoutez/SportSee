@@ -53,5 +53,6 @@
 }
 
 .custom-tooltip p {
-  margin: 4px 0;
+  margin: 5px 0;
+  padding: 6px;
 }

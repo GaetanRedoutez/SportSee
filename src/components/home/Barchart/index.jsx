@@ -76,14 +76,14 @@ export const Barchart = ({ data }) => {
             orientation="right"
             tickLine={false}
             axisLine={false}
-            tick={{ fill: "#9B9EAC" }}
-            domain={[68, 72]}
-            tickCount={5}
+            tickCount={4}
           />
           <YAxis yAxisId="left" orientation="left" hide={true} />
           <Tooltip
             content={<CustomTooltip />}
-            cursor={{ fill: "rgba(0, 0, 0, 0.05)" }}
+            cursor={{ fill: "rgba(0, 0, 0, 0.2)" }}
+            position={{ y: 0 }}
+            animationDuration={200}
           />
           <Bar
             yAxisId="right"

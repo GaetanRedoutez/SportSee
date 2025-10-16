@@ -1,5 +1,6 @@
 import { formatNumber } from "../../../utils/formatNumber";
 import { Icon } from "../../common/Icon";
+import "./index.css";
 
 export const Card = ({ icon, color, value, unit, label }) => (
   <div className="card-content">
