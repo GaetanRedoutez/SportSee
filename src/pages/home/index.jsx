@@ -12,7 +12,7 @@ export const HomePage = () => {
 
   const { user, activity, averageSessions, performance, loading, error } =
     useUserData(userId);
-  console.log(performance);
+
   if (loading) return <Loader />;
   if (error)
     return (
@@ -68,12 +68,12 @@ export const HomePage = () => {
       <div className="home-charts">
         <div className="home-activity">
           <div className="home-barchart">
-            <Barchart data={activity?.sessions ?? []} />
+            <Barchart data={activity ?? []} />
           </div>
           <div className="home-subchart">
-            <Linechart data={averageSessions?.sessions ?? []} />
-            <Radarchart data={performance.performances ?? []} />
-            <Linechart data={averageSessions?.sessions ?? []} />
+            <Linechart data={averageSessions ?? []} />
+            <Radarchart data={performance ?? []} />
+            <Linechart data={averageSessions ?? []} />
           </div>
         </div>
         <div className="home-cards">

@@ -10,22 +10,20 @@ export const transformUser = (data) => ({
   lipidCount: data.keyData.lipidCount,
 });
 
-export const transformActivity = (data) => ({
-  userId: data.userId,
-  sessions: data.sessions.map((s) => ({
+export const transformActivity = (data) => [
+  ...data.sessions.map((s) => ({
     date: s.day,
     kilogram: s.kilogram,
     calories: s.calories,
   })),
-});
+];
 
-export const transformAverageSessions = (data) => ({
-  userId: data.userId,
-  sessions: data.sessions.map((s) => ({
+export const transformAverageSessions = (data) => [
+  ...data.sessions.map((s) => ({
     day: s.day,
     sessionLength: s.sessionLength,
   })),
-});
+];
 
 const kindLabels = {
   cardio: "Cardio",
@@ -55,8 +53,5 @@ export const transformPerformance = (data) => {
     (a, b) => kindOrder.indexOf(a.kind) - kindOrder.indexOf(b.kind)
   );
 
-  return {
-    userId: data.userId,
-    performances,
-  };
+  return [...performances];
 };
