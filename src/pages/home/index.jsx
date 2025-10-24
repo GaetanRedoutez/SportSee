@@ -6,6 +6,7 @@ import "./index.css";
 import { Card } from "../../components/home/Card";
 import { Linechart } from "../../components/home/Linechart";
 import { Radarchart } from "../../components/home/Radarchart";
+import { ScoreChart } from "../../components/home/Scorechart";
 
 export const HomePage = () => {
   const [userId, setUserId] = useState(12);
@@ -73,7 +74,7 @@ export const HomePage = () => {
           <div className="home-subchart">
             <Linechart data={averageSessions ?? []} />
             <Radarchart data={performance ?? []} />
-            <Linechart data={averageSessions ?? []} />
+            <ScoreChart data={user ?? {}} />
           </div>
         </div>
         <div className="home-cards">
