@@ -139,6 +139,4 @@ Toutes les réponses de l'API sont normalisées via des fonctions de transformat
 ## Gestion des Erreurs
 
 - Les erreurs API sont interceptées et formatées avec des messages significatifs
-- Les états de chargement sont affichés pendant la récupération des données
-- Replis gracieux pour les données manquantes ou invalides
 - `Promise.allSettled` utilisé pour gérer les échecs de données partielles
