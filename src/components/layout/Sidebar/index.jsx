@@ -15,7 +15,7 @@ export const Sidebar = () => {
             className={"sidebar-icon"}
           />
         </div>
-        <div className="sidebar-copyright">Copiryght, SportSee 2020</div>
+        <div className="sidebar-copyright">Copyright, SportSee 2020</div>
       </div>
     </div>
   );
