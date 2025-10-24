@@ -6,6 +6,15 @@ import {
 } from "recharts";
 import "./index.css";
 
+/**
+ * ScoreChart component renders a radial bar chart to display a user's score as a percentage.
+ *
+ * @param {Object} user - The user data object.
+ * @param {Object} user.data - The data object containing the score.
+ * @param {number} user.data.score - The user's score as a decimal (e.g., 0.75 for 75%).
+ *
+ * @returns {JSX.Element} A React component that displays a radial bar chart with the user's score percentage.
+ */
 export const ScoreChart = (user) => {
   const percentage = Math.round(user.data.score * 100);
 

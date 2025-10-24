@@ -10,6 +10,17 @@ import {
 } from "recharts";
 import "./index.css";
 
+/**
+ * Linechart component displays a line chart representing the average session duration.
+ *
+ * @component
+ * @param {Object} props - The props object.
+ * @param {Array} props.data - The data array for the chart. Each object in the array should have:
+ *   @param {number} props.data[].day - The day of the week as a number (1-7).
+ *   @param {number} props.data[].sessionLength - The session length in minutes.
+ *
+ * @returns {JSX.Element} A responsive line chart with custom tooltips and styling.
+ */
 export const Linechart = ({ data }) => {
   const dayLabels = ["L", "M", "M", "J", "V", "S", "D"];
 

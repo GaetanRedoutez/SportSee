@@ -9,6 +9,24 @@ import {
 } from "recharts";
 import "./index.css";
 
+/**
+ * Barchart component renders a bar chart visualization of daily activity data.
+ *
+ * @component
+ * @param {Object[]} data - Array of data objects representing daily activity.
+ * @param {number} data[].kilogram - The weight in kilograms for the day.
+ * @param {number} data[].calories - The calories burned for the day.
+ *
+ * @example
+ * const activityData = [
+ *   { kilogram: 70, calories: 240 },
+ *   { kilogram: 69, calories: 220 },
+ * ];
+ *
+ * <Barchart data={activityData} />
+ *
+ * @returns {JSX.Element} A bar chart displaying daily weight and calories burned.
+ */
 export const Barchart = ({ data }) => {
   const chartData = data.map((item, index) => ({
     day: index + 1,
