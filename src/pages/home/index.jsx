@@ -1,27 +1,15 @@
-import { useState } from "react";
-import { Barchart } from "../../components/home/Barchart";
+import { useLoaderData } from "react-router-dom";
 import { Loader } from "../../components/common/Loader";
-import { useUserData } from "../../hooks/useUserData";
-import "./index.css";
+import { Barchart } from "../../components/home/Barchart";
 import { Card } from "../../components/home/Card";
 import { Linechart } from "../../components/home/Linechart";
 import { Radarchart } from "../../components/home/Radarchart";
 import { ScoreChart } from "../../components/home/Scorechart";
+import "./index.css";
 
 export const HomePage = () => {
-  const [userId, setUserId] = useState(12);
+  const { user, activity, averageSessions, performance } = useLoaderData();
 
-  const { user, activity, averageSessions, performance, loading, error } =
-    useUserData(userId);
-
-  if (loading) return <Loader />;
-  if (error)
-    return (
-      <div>
-        Erreur : {error}
-        <UserChoice setUserId={setUserId} />
-      </div>
-    );
   if (!user) return null;
 
   const cardsData = [
