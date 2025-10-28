@@ -1,0 +1,58 @@
+.barchart-container {
+  background-color: #fbfbfb;
+  border-radius: 8px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding: 24px;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 14px;
+  color: #74798c;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-dot-weight {
+  background-color: #282d30;
+}
+
+.legend-dot-calories {
+  background-color: #e60000;
+}
+
+.custom-tooltip {
+  background-color: #e60000;
+  color: white;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.custom-tooltip p {
+  margin: 5px 0;
+  padding: 6px;
+}

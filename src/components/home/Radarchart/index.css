@@ -1,0 +1,9 @@
+.radarchart-container {
+  position: relative;
+  background-color: #282d30;
+  border-radius: 8px;
+  height: 260px;
+  width: 100%;
+  flex: 1;
+  padding: 0 10px;
+}
