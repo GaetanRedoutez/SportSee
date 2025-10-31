@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { homeLoader } from "./pages/home/loader";
 import { ErrorPage } from "./pages/error";
+import { Loader } from "./components/common/Loader";
 
 const Layout = () => {
   const navigation = useNavigation();
@@ -18,8 +19,7 @@ const Layout = () => {
       <Header />
       <div className="content">
         <Sidebar />
-        {navigation.state === "loading" && <Loader />}
-        <Outlet />
+        {navigation.state === "loading" ? <Loader /> : <Outlet />}
       </div>
     </div>
   );
